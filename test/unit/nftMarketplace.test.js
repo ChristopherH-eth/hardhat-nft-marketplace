@@ -1,4 +1,4 @@
-const { getNamedAccounts, ethers, deployments } = require("hardhat")
+const { ethers, deployments } = require("hardhat")
 const { developmentChains } = require("../../helper-hardhat-config")
 const { assert, expect } = require("chai")
 
@@ -113,7 +113,9 @@ const { assert, expect } = require("chai")
 
               it("Should revert if the NFT is not listed", async function () {
                   await expect(
-                      nftMarketplace.buyItem(basicNft.address, "1", { value: LISTING_PRICE })
+                      nftMarketplace.buyItem(basicNft.address, TOKEN_ID + 1, {
+                          value: LISTING_PRICE,
+                      })
                   ).to.be.revertedWith("NftMarketplace__NotListed")
               })
           })
@@ -133,6 +135,25 @@ const { assert, expect } = require("chai")
                       "ItemCancelled"
                   )
               })
+
+              it("Should revert if the user doesn't own the NFT", async function () {
+                  nftMarketplace = await nftMarketplaceContract.connect(user)
+                  await expect(
+                      nftMarketplace.cancelListing(basicNft.address, TOKEN_ID)
+                  ).to.be.revertedWith("NftMarketplace__NotOwner")
+              })
+
+              it("Should revert if the NFT is not listed", async function () {
+                  nftMarketplace = await nftMarketplaceContract.connect(user)
+                  expect(
+                      await nftMarketplace.buyItem(basicNft.address, TOKEN_ID, {
+                          value: LISTING_PRICE,
+                      })
+                  ).to.emit("ItemBought")
+                  await expect(
+                      nftMarketplace.cancelListing(basicNft.address, TOKEN_ID)
+                  ).to.be.revertedWith("NftMarketplace__NotListed")
+              })
           })
 
           /**
@@ -149,6 +170,19 @@ const { assert, expect } = require("chai")
                   expect(
                       await nftMarketplace.updateListing(basicNft.address, TOKEN_ID, NEW_PRICE)
                   ).to.emit("ItemListed")
+              })
+
+              it("Should revert if the user doesn't own the NFT", async function () {
+                  nftMarketplace = await nftMarketplaceContract.connect(user)
+                  await expect(
+                      nftMarketplace.updateListing(basicNft.address, TOKEN_ID, NEW_PRICE)
+                  ).to.be.revertedWith("NftMarketplace__NotOwner")
+              })
+
+              it("Should revert if the NFT is not listed", async function () {
+                  await expect(
+                      nftMarketplace.updateListing(basicNft.address, TOKEN_ID + 1, NEW_PRICE)
+                  ).to.be.revertedWith("NftMarketplace__NotListed")
               })
           })
 

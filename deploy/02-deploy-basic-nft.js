@@ -2,6 +2,10 @@ const { network } = require("hardhat")
 const { verify } = require("../utils/verify")
 const { developmentChains } = require("../helper-hardhat-config")
 
+/**
+ * @notice This is a deploy script for the BasicNft.sol contract.
+ */
+
 module.exports = async function ({ deployments, getNamedAccounts }) {
     const { deploy, log } = deployments
     const { deployer } = await getNamedAccounts()
@@ -18,13 +22,12 @@ module.exports = async function ({ deployments, getNamedAccounts }) {
     })
 
     log("Deployment complete.")
+    log("---------------------------------------------")
 
     // Call verify script if not on local blockchain and Etherscan API key is present
     if (!developmentChains.includes(network.name) && process.env.ETHERSCAN_API_KEY) {
         await verify(basicNft.address, args)
     }
-
-    log("---------------------------------------------")
 }
 
 module.exports.tags = ["all", "basicnft"]

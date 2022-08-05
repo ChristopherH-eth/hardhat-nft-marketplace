@@ -53,6 +53,11 @@ contract NftMarketplace is ReentrancyGuard {
     mapping(address => uint256) private s_proceeds;
 
     /* Modifiers */
+    /**
+     * @notice The notListed() modifier ensures an NFT is not listed before trying to
+     * list it.
+     */
+
     modifier notListed(
         address nftAddress,
         uint256 tokenId,
@@ -66,6 +71,11 @@ contract NftMarketplace is ReentrancyGuard {
         _;
     }
 
+    /**
+     * @notice The isListed() modifier ensures an NFT is listed before trying to interact
+     * with it.
+     */
+
     modifier isListed(address nftAddress, uint256 tokenId) {
         Listing memory listing = s_listings[nftAddress][tokenId];
 
@@ -74,6 +84,11 @@ contract NftMarketplace is ReentrancyGuard {
         }
         _;
     }
+
+    /**
+     * @notice The isOwner() modifier ensures an NFT belongs to the user trying to interact with
+     * it.
+     */
 
     modifier isOwner(
         address nftAddress,

@@ -1,10 +1,10 @@
 /**
- * @dev Script to verify contract when deployed to a test or mainnet.
+ * @notice This script is to verify a contract when deployed to a test or mainnet.
  */
+
 const { run } = require("hardhat")
 
 const verify = async (contractAddress, args) => {
-    console.log("---------------------------------------------")
     console.log("Verifying contract...")
     try {
         await run("verify:verify", {
