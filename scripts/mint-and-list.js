@@ -1,4 +1,5 @@
-const { ethers } = require("hardhat")
+const { ethers, network } = require("hardhat")
+const { moveBlocks } = require("../utils/move-blocks")
 
 /**
  * @notice This script is used to mint and list NFTs on the NFT Marketplace.
@@ -24,6 +25,10 @@ async function mintAndList() {
     await listingTx.wait(1)
 
     console.log("NFT Listed.")
+
+    if (network.config.chainId == 31337) {
+        await moveBlocks(1, (sleepAmount = 1000))
+    }
 }
 
 mintAndList()
