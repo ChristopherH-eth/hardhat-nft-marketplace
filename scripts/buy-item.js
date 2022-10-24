@@ -1,12 +1,17 @@
+/**
+ * @file buy-item.js
+ * @author Original author Free Code Camp (Patrick Collins) used for learning purposes by 0xChristopher
+ * @brief This script is used to buy NFT listings on the NFT Marketplace.
+ */
+
 const { ethers, network } = require("hardhat")
 const { moveBlocks } = require("../utils/move-blocks")
 
-/**
- * @notice This script is used to buy NFT listings on the NFT Marketplace.
- */
-
 const TOKEN_ID = 14
 
+/**
+ * @notice The buy() function purchases an NFT from the marketplace
+ */
 async function buy() {
     const nftMarketplace = await ethers.getContract("NftMarketplace")
     const basicNft = await ethers.getContract("BasicNft")

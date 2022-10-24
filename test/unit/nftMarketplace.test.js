@@ -1,10 +1,12 @@
+/**
+ * @file nftMarketplace.test.js
+ * @author 0xChristopher
+ * @brief These are the unit tests for the Random IPFS NFT smart contract.
+ */
+
 const { ethers, deployments } = require("hardhat")
 const { developmentChains } = require("../../helper-hardhat-config")
 const { assert, expect } = require("chai")
-
-/**
- * @notice These are the unit tests for the Random IPFS NFT smart contract.
- */
 
 !developmentChains.includes(network.name)
     ? describe.skip
@@ -35,7 +37,6 @@ const { assert, expect } = require("chai")
           /**
            * @notice Unit tests for the listItem() function.
            */
-
           describe("listItem", function () {
               it("Lists an NFT", async function () {
                   await basicNft.approve(nftMarketplaceContract.address, TOKEN_ID)
@@ -77,7 +78,6 @@ const { assert, expect } = require("chai")
           /**
            * @notice Unit tests for the buyItem() function.
            */
-
           describe("buyItem", function () {
               beforeEach(async function () {
                   await basicNft.approve(nftMarketplaceContract.address, TOKEN_ID)
@@ -123,7 +123,6 @@ const { assert, expect } = require("chai")
           /**
            * @notice Unit tests for the cancelListing() function.
            */
-
           describe("cancelListing", function () {
               beforeEach(async function () {
                   await basicNft.approve(nftMarketplaceContract.address, TOKEN_ID)
@@ -159,7 +158,6 @@ const { assert, expect } = require("chai")
           /**
            * @notice Unit tests for the updateListing() function.
            */
-
           describe("updateListing", function () {
               beforeEach(async function () {
                   await basicNft.approve(nftMarketplaceContract.address, TOKEN_ID)
@@ -189,7 +187,6 @@ const { assert, expect } = require("chai")
           /**
            * @notice Unit tests for the withdrawProceeds() function.
            */
-
           describe("withdrawProceeds", function () {
               beforeEach(async function () {
                   await basicNft.approve(nftMarketplaceContract.address, TOKEN_ID)
@@ -215,7 +212,6 @@ const { assert, expect } = require("chai")
           /**
            * @notice Unit tests for the getListing() function.
            */
-
           describe("getListing", function () {
               beforeEach(async function () {
                   await basicNft.approve(nftMarketplaceContract.address, TOKEN_ID)
@@ -235,7 +231,6 @@ const { assert, expect } = require("chai")
           /**
            * @notice Unit tests for the getProceeds() function.
            */
-
           describe("getProceeds", function () {
               beforeEach(async function () {
                   await basicNft.approve(nftMarketplaceContract.address, TOKEN_ID)

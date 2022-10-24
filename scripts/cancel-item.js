@@ -1,12 +1,17 @@
+/**
+ * @file cancel-item.js
+ * @author Original author Free Code Camp (Patrick Collins) used for learning purposes by 0xChristopher
+ * @brief This script is used to cancel NFT listings on the NFT Marketplace.
+ */
+
 const { ethers, network } = require("hardhat")
 const { moveBlocks } = require("../utils/move-blocks")
 
-/**
- * @notice This script is used to cancel NFT listings on the NFT Marketplace.
- */
-
 const TOKEN_ID = 12
 
+/**
+ * @notice The cancel() function cancels a particular NFT listing
+ */
 async function cancel() {
     const nftMarketplace = await ethers.getContract("NftMarketplace")
     const basicNft = await ethers.getContract("BasicNft")

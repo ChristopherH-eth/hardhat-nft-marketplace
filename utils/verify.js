@@ -1,9 +1,14 @@
 /**
- * @notice This script is to verify a contract when deployed to a test or mainnet.
+ * @file verify.js
+ * @author Original author Free Code Camp (Patrick Collins) used for learning purposes by 0xChristopher
+ * @brief This script is to verify a contract when deployed to a test or mainnet.
  */
 
 const { run } = require("hardhat")
 
+/**
+ * @notice The verify() function verifies the contract on the blockchain programmatically
+ */
 const verify = async (contractAddress, args) => {
     console.log("Verifying contract...")
     try {

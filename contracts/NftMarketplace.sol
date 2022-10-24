@@ -4,7 +4,7 @@ pragma solidity ^0.8.9;
 
 /**
  * @title Decentralized NFT Marketplace
- * @author 0xChristopher
+ * @author Original author Free Code Camp (Patrick Collins) used for learning purposes by 0xChristopher
  * @notice This contract is used to create a Decentralized NFT Marketplace.
  */
 
@@ -57,7 +57,6 @@ contract NftMarketplace is ReentrancyGuard {
      * @notice The notListed() modifier ensures an NFT is not listed before trying to
      * list it.
      */
-
     modifier notListed(
         address nftAddress,
         uint256 tokenId,
@@ -75,7 +74,6 @@ contract NftMarketplace is ReentrancyGuard {
      * @notice The isListed() modifier ensures an NFT is listed before trying to interact
      * with it.
      */
-
     modifier isListed(address nftAddress, uint256 tokenId) {
         Listing memory listing = s_listings[nftAddress][tokenId];
 
@@ -89,7 +87,6 @@ contract NftMarketplace is ReentrancyGuard {
      * @notice The isOwner() modifier ensures an NFT belongs to the user trying to interact with
      * it.
      */
-
     modifier isOwner(
         address nftAddress,
         uint256 tokenId,
@@ -113,7 +110,6 @@ contract NftMarketplace is ReentrancyGuard {
      * @dev Alternatively, NFTs could be held by the marketplace; instead, this contract allows
      * the users to hold their NFTs when listed.
      */
-
     function listItem(
         address nftAddress,
         uint256 tokenId,
@@ -139,7 +135,6 @@ contract NftMarketplace is ReentrancyGuard {
      * @param nftAddress: Address of the NFT
      * @param tokenId: Token ID of the NFT
      */
-
     function buyItem(address nftAddress, uint256 tokenId)
         external
         payable
@@ -165,7 +160,6 @@ contract NftMarketplace is ReentrancyGuard {
      * @param nftAddress: Address of the NFT
      * @param tokenId: Token ID of the NFT
      */
-
     function cancelListing(address nftAddress, uint256 tokenId)
         external
         isOwner(nftAddress, tokenId, msg.sender)
@@ -182,7 +176,6 @@ contract NftMarketplace is ReentrancyGuard {
      * @param tokenId: Token ID of the NFT
      * @param newPrice: The new price of the NFT
      */
-
     function updateListing(
         address nftAddress,
         uint256 tokenId,
@@ -196,7 +189,6 @@ contract NftMarketplace is ReentrancyGuard {
      * @notice The withdrawProceeds() function allows users to withdraw their proceeds from
      * the marketplace.
      */
-
     function withdrawProceeds() external {
         uint256 proceeds = s_proceeds[msg.sender];
 
@@ -215,7 +207,6 @@ contract NftMarketplace is ReentrancyGuard {
     /**
      * @notice The getListing() function returns a particular listing.
      */
-
     function getListing(address nftAddress, uint256 tokenId)
         external
         view
@@ -227,7 +218,6 @@ contract NftMarketplace is ReentrancyGuard {
     /**
      * @notice The getProceeds() function returns the current proceeds of the seller.
      */
-
     function getProceeds(address seller) external view returns (uint256) {
         return s_proceeds[seller];
     }

@@ -1,10 +1,15 @@
+/**
+ * @file mint.js
+ * @author Original author Free Code Camp (Patrick Collins) used for learning purposes by 0xChristopher
+ * @brief This script is used to mint NFTs.
+ */
+
 const { ethers, network } = require("hardhat")
 const { moveBlocks } = require("../utils/move-blocks")
 
 /**
- * @notice This script is used to mint NFTs.
+ * @notice The mint() function mints a new BasicNft
  */
-
 async function mint() {
     const basicNft = await ethers.getContract("BasicNft")
 

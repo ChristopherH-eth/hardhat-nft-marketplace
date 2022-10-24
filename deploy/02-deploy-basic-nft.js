@@ -1,10 +1,12 @@
+/**
+ * @file 02-deploy-basic-nft.js
+ * @author Original author Free Code Camp (Patrick Collins) used for learning purposes by 0xChristopher
+ * @brief This is a deploy script for the BasicNft.sol contract.
+ */
+
 const { network } = require("hardhat")
 const { verify } = require("../utils/verify")
 const { developmentChains } = require("../helper-hardhat-config")
-
-/**
- * @notice This is a deploy script for the BasicNft.sol contract.
- */
 
 module.exports = async function ({ deployments, getNamedAccounts }) {
     const { deploy, log } = deployments

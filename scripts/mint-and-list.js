@@ -1,12 +1,17 @@
+/**
+ * @file mint-and-list.js
+ * @author Original author Free Code Camp (Patrick Collins) used for learning purposes by 0xChristopher
+ * @brief This script is used to mint and list NFTs on the NFT Marketplace.
+ */
+
 const { ethers, network } = require("hardhat")
 const { moveBlocks } = require("../utils/move-blocks")
 
-/**
- * @notice This script is used to mint and list NFTs on the NFT Marketplace.
- */
-
 const PRICE = ethers.utils.parseEther("0.1")
 
+/**
+ * @notice The mintAndList() function mints a new BasicNft and lists it on the marketplace
+ */
 async function mintAndList() {
     const nftMarketplace = await ethers.getContract("NftMarketplace")
     const basicNft = await ethers.getContract("BasicNft")

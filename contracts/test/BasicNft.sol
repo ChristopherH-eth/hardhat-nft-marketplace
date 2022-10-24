@@ -4,7 +4,7 @@ pragma solidity 0.8.9;
 
 /**
  * @title Basic NFT Contract
- * @author 0xChristopher
+ * @author Original author Free Code Camp (Patrick Collins) used for learning purposes by 0xChristopher
  * @notice This contract is for creating basic NFTs.
  */
 
@@ -19,7 +19,6 @@ contract BasicNft is ERC721 {
     /**
      * @notice Imported ERC721 constructor from Open Zeppelin's ERC721.sol.
      */
-
     constructor() ERC721("Dogie", "DOG") {
         s_tokenCounter = 0;
     }
@@ -27,7 +26,6 @@ contract BasicNft is ERC721 {
     /**
      * @notice The mintNFT() function mints a new NFT.
      */
-
     function mintNFT() public returns (uint256) {
         _safeMint(msg.sender, s_tokenCounter);
         s_tokenCounter = s_tokenCounter + 1;
@@ -38,7 +36,6 @@ contract BasicNft is ERC721 {
      * @notice The tokenURI() function overrides the Open Zeppelin tokenURI() function
      * and returns a TOKEN_URI.
      */
-
     function tokenURI(uint256 tokenId) public view override returns (string memory) {
         return TOKEN_URI;
     }
@@ -46,7 +43,6 @@ contract BasicNft is ERC721 {
     /**
      * @notice Public view functions for private variables.
      */
-
     function getTokenCounter() public view returns (uint256) {
         return s_tokenCounter;
     }

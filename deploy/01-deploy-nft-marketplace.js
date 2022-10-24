@@ -1,10 +1,12 @@
+/**
+ * @file 01-deploy-nft-marketplace.js
+ * @author Original author Free Code Camp (Patrick Collins) used for learning purposes by 0xChristopher
+ * @brief This is a deploy script for the NftMarketplace.sol contract.
+ */
+
 const { network, ethers } = require("hardhat")
 const { developmentChains } = require("../helper-hardhat-config")
 const { verify } = require("../utils/verify")
-
-/**
- * @notice This is a deploy script for the NftMarketplace.sol contract.
- */
 
 module.exports = async function ({ getNamedAccounts, deployments }) {
     const { deploy, log } = deployments
